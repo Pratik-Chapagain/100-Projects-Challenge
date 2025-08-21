@@ -1,6 +1,6 @@
-# Simple To-Do List App (CLI)
+from datetime import datetime  # Import datetime for timestamps
 
-todo_list = []  # stores tasks as dictionaries: {"task": "Buy milk", "done": False}
+todo_list = []  # Stores tasks as dictionaries: {"task": "Buy milk", "done": False, "created_at": timestamp}
 
 def show_tasks():
     if not todo_list:
@@ -9,11 +9,20 @@ def show_tasks():
         print("\n📌 Your To-Do List:")
         for i, task in enumerate(todo_list, 1):
             status = "✔️" if task["done"] else "❌"
-            print(f"{i}. {task['task']} [{status}]")
+            # Display task with creation timestamp and updated timestamp if available
+            timestamp_str = f"Created: {task['created_at'].strftime('%Y-%m-%d %H:%M:%S')}"
+            if task.get("updated_at"):
+                timestamp_str += f", Updated: {task['updated_at'].strftime('%Y-%m-%d %H:%M:%S')}"
+            print(f"{i}. {task['task']} [{status}] ({timestamp_str})")
 
 def add_task():
     task_name = input("\nEnter a new task: ")
-    todo_list.append({"task": task_name, "done": False})
+    # Add task with current timestamp
+    todo_list.append({
+        "task": task_name,
+        "done": False,
+        "created_at": datetime.now()
+    })
     print(f"➕ Task '{task_name}' added!")
 
 def mark_done():
@@ -24,6 +33,8 @@ def mark_done():
         task_num = int(input("\nEnter task number to mark as done: "))
         if 0 < task_num <= len(todo_list):
             todo_list[task_num - 1]["done"] = True
+            # Update timestamp when marking as done
+            todo_list[task_num - 1]["updated_at"] = datetime.now()
             print(f"✔️ Task '{todo_list[task_num - 1]['task']}' marked as done.")
         else:
             print("⚠️ Invalid task number!")
