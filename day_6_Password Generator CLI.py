@@ -16,3 +16,4 @@ for i in range(count):
     password = ''.join(random.choices(chars, k=length))
     print(f"Your Password {i+1}: {password}")
 
+
