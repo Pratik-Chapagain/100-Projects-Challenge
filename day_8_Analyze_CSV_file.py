@@ -17,3 +17,5 @@ print("\nMissing values:\n", df.isnull().sum())
 # Count unique values for categorical columns
 for col in df.select_dtypes(include='object'):
     print(f"\nUnique values in '{col}':\n", df[col].value_counts())
+
+    
