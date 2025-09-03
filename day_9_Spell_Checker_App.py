@@ -31,3 +31,4 @@ if __name__ == "__main__":
     text = input("Enter a sentence: ")
     corrected = app.correct_text(text)
     print("\nCorrected Sentence:", corrected)
+    
