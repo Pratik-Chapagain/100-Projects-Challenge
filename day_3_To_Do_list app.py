@@ -24,6 +24,7 @@ def add_task():
         "important": False  # New tasks are not important by default
     })
     print(f"➕ Task '{task_name}' added!")
+    
 
 def mark_done():
     show_tasks()
