@@ -48,6 +48,3 @@ with open("myfile.txt", "r") as f:
 print("\nFinal File Content: ")
 print(final_content)
 
-
-
-
