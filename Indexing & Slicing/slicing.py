@@ -8,9 +8,3 @@ print(arr[:4]) #index 0 to 3
 print(arr[::2]) #every second element
 print(arr[::-1]) #reverses the element
 
-
-
-
-
-
-
